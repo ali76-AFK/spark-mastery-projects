@@ -1,1 +1,1 @@
-📸 Screenshots: Databricks cluster + 28K anomalies output
+ Screenshots: Databricks cluster + 28K anomalies output
