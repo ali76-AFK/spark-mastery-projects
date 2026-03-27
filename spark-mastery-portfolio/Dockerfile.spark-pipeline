@@ -1,0 +1,9 @@
+FROM apache/spark:3.5.1-python3
+
+WORKDIR /app
+COPY *.py /app/
+COPY generate_*.py /app/
+RUN mkdir -p /app/projects /app/data
+
+ENV SPARK_HOME=/opt/spark
+ENV PYTHONPATH=${SPARK_HOME}/python:/app

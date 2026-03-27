@@ -6,7 +6,7 @@ from pyspark.sql.types import *
 spark = SparkSession.builder.appName("Ecommerce-Anomaly").getOrCreate()
 
 # Load 1.44M e-commerce orders
-df = spark.read.option("header", "true").csv("ecommerce_orders_raw.csv")
+df = spark.read.option("header", "true").csv("/app/data/ecommerce_orders_raw.csv")
 df = df.withColumn("quantity", col("quantity").cast("int")) \
        .withColumn("unit_price", col("unit_price").cast("double")) \
        .withColumn("discount_pct", col("discount_pct").cast("double")) \
