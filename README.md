@@ -5,7 +5,7 @@
 ## Project 1 ✅ IoT Anomaly Detection (Local Spark 3.5.1)
 
 **1.44M factory sensors → 28,322 anomalies** (1.96%) in **2:30 min** (16GB laptop)
-### 🎯 Live Results
+### Live Results
 
  Max temp: 44.3°C (Z=7.66σ OVERHEAT)
  Max humid: 81.4% (Z=3.01σ)
