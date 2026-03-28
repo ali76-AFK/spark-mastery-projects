@@ -22,7 +22,6 @@ text
 CSV → PySpark DataFrames → Z-Score (|Z|>3σ) → Alerts CSV
 temp_z = abs((temp - 25.1°C) / 2.5σ)
 
-#  PySpark Mastery Portfolio
 
 **Production-grade PySpark anomaly detection pipelines for 8 real-world domains | 7.2M+ records | Docker containerized**
 
