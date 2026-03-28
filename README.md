@@ -51,6 +51,7 @@ temp_z = abs((temp - 25.1°C) / 2.5σ)
 | **TOTAL** | **7.2M** | **299K** | **ENTERPRISE READY** |
 
 ##  Repository Structure
+´´´
 spark-mastery-portfolio/
 ├── data/ # 1.44M-record CSVs (108-528MB)
 │ ├── ecommerce_orders_raw.csv
@@ -74,7 +75,7 @@ spark-mastery-portfolio/
 │ └── social_alerts/
 ├── Dockerfile.spark-pipeline # Production Docker image
 └── README.md # This file
-
+´´´
 ##  Projects Overview
 
 ### 1. **IoT Sensor Anomaly Detection** 
