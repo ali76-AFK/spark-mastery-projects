@@ -132,7 +132,7 @@ Verified Output:
  Dataset: 1,440,000 orders processed
  E-COMMERCE FRAUD: 28,322 alerts (1.96%)
 
-🏆 Production Verification (Your Logs)
+ Production Verification
 ✅ Spark 3.5.1 | Java 11 | Linux container startup ✓
 ✅ MemoryStore: 434.4 MiB RAM allocated ✓
 ✅ SparkUI: port 4040 (web accessible) ✓
