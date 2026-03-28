@@ -25,7 +25,6 @@ temp_z = abs((temp - 25.1°C) / 2.5σ)
 
 **Production-grade PySpark anomaly detection pipelines for 8 real-world domains | 7.2M+ records | Docker containerized**
 
-*Master's AI student → Senior Data Engineer portfolio (built March 2026)*
 
 [![Spark](https://img.shields.io/badge/Spark-3.5.1-orange.svg)](https://spark.apache.org) [![Docker](https://img.shields.io/badge/Docker-Production-blue.svg)](https://docker.com) [![PySpark](https://img.shields.io/badge/PySpark-DataFrames-yellow.svg)](https://spark.apache.org/docs/latest/api/python/)
 
@@ -38,7 +37,7 @@ temp_z = abs((temp - 25.1°C) / 2.5σ)
 - **Verified execution**: MemoryStore 434MiB | SparkUI:4040 | 528MB datasets on 16GB laptop
 - **Skills**: PySpark DataFrames/SQL (NO RDDs) | Docker | Z-score anomaly detection
 
-## 📊 Executive Impact
+##  Executive Impact
 
 | Domain | Records | Anomalies | Business Impact |
 |--------|---------|-----------|-----------------|
