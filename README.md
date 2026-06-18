@@ -1,170 +1,120 @@
-#  Spark Mastery: Production Projects
+# Spark Mastery
 
-**AI/Robotics Portfolio** - PySpark across 5 domains + 4 environments
+PySpark-based anomaly detection portfolio across IoT, finance, e-commerce, logs, and social media.
 
-## Project ✅ IoT Anomaly Detection (Local Spark 3.5.1)
+## Overview
 
-**1.44M factory sensors → 28,322 anomalies** (1.96%) in **2:30 min** (16GB laptop)
-### Live Results
+Spark Mastery is a portfolio of production-style PySpark pipelines built to process large synthetic and semi-realistic datasets across multiple domains.  
+The project demonstrates distributed data processing, anomaly detection, Dockerized execution, and repeatable pipeline design.
 
- Max temp: 44.3°C (Z=7.66σ OVERHEAT)
- Max humid: 81.4% (Z=3.01σ)
- Total alerts: 28,322 from 1,440,000 readings
- 
- ### Run It
-```bash
-python3 generate_data.py      # 1.44M sensors (125MB)
-spark-submit iot_anomaly_final.py  # 28K alerts (3.3MB)
-``` 
- Architecture
+Across the portfolio, the pipelines identify unusual patterns in sensor readings, trading activity, purchase behavior, server logs, and social media engagement.
 
-text
-CSV → PySpark DataFrames → Z-Score (|Z|>3σ) → Alerts CSV
-temp_z = abs((temp - 25.1°C) / 2.5σ)
+## Portfolio Highlights
 
+- 7.2M+ records processed across multiple domains.
+- 299K anomalies detected using Z-score-based detection.
+- Dockerized Spark 3.5.1 execution environment.
+- PySpark DataFrames and SQL-based pipeline design.
+- End-to-end examples for data generation, processing, and alert export.
+- Demonstrates a strong mix of data engineering, analytics, and operational reasoning.
 
-**Production-grade PySpark anomaly detection pipelines for 8 real-world domains | 7.2M+ records | Docker containerized**
+## Architecture
 
+Each pipeline follows a similar pattern:
 
-[![Spark](https://img.shields.io/badge/Spark-3.5.1-orange.svg)](https://spark.apache.org) [![Docker](https://img.shields.io/badge/Docker-Production-blue.svg)](https://docker.com) [![PySpark](https://img.shields.io/badge/PySpark-DataFrames-yellow.svg)](https://spark.apache.org/docs/latest/api/python/)
-
-##  Highlights
-
-- **7.2M+ records** processed across IoT, finance, e-commerce, server logs, and social media
-- **299K anomalies** detected using Z-score ML (|Z| > 3σ)
-- **Dockerized Spark 3.5.1** production pipelines (apache/spark:3.5.1-python3)
-- **€1.7M+ business impact** demonstrated (downtime saved, fraud blocked, uptime achieved)
-- **Verified execution**: MemoryStore 434MiB | SparkUI:4040 | 528MB datasets on 16GB laptop
-- **Skills**: PySpark DataFrames/SQL (NO RDDs) | Docker | Z-score anomaly detection
-
-##  Executive Impact
-
-| Domain | Records | Anomalies | Business Impact |
-|--------|---------|-----------|-----------------|
-| **IoT Sensors** | 1.44M | 28K | €1.2M downtime prevented |
-| **Financial HFT** | 1.44M | 35K | 2.3% alpha capture |
-| **E-commerce Fraud** | 1.44M | 28K | €450K fraud blocked |
-| **Server Logs/SRE** | 1.44M | 92K | 99.9% uptime |
-| **Social Media** | 1.44M | 116K | Viral trends + bot detection |
-| **TOTAL** | **7.2M** | **299K** | **ENTERPRISE READY** |
-
-##  Repository Structure
+```text
+Raw CSV data → PySpark DataFrames → Feature engineering / Z-score detection → Alert export CSV
 ```
-spark-mastery-portfolio/
-├── data/ # 1.44M-record CSVs (108-528MB)
-│ ├── ecommerce_orders_raw.csv
-│ ├── iot_sensors_raw.csv
-│ ├── server_logs_raw.csv
-│ ├── social_media_posts.csv
-│ └── stock_trades_raw.csv
-├── pipelines/ # Main PySpark anomaly detection scripts
-│ ├── iot_anomaly.py
-│ ├── stock_anomaly.py
-│ ├── ecommerce_anomaly_final.py
-│ ├── server_logs_anomaly.py
-│ └── social_media_trends.py
-├── generate_data/ # Synthetic dataset generators
-│ ├── generate_ecommerce_data.py
-│ ├── generate_server_logs.py
-│ └── generate_social_media.py
-├── outputs/ # Anomaly alert CSVs
-│ ├── ecommerce_alerts/
-│ ├── server_alerts/
-│ └── social_alerts/
-├── Dockerfile.spark-pipeline # Production Docker image
-└── README.md # This file
+
+The pipelines are designed to be reproducible locally and in Docker, with clear input and output directories.
+
+## Project Structure
+
+```text
+spark-mastery-projects/
+├── data/                  # Input datasets
+├── pipelines/             # Main PySpark anomaly detection scripts
+├── generate_data/         # Synthetic data generators
+├── outputs/               # Generated anomaly alert files
+├── Dockerfile.spark-pipeline
+└── README.md
 ```
-##  Projects Overview
 
-### 1. **IoT Sensor Anomaly Detection** 
-**1.44M sensor readings** → Factory predictive maintenance
-- Temperature spikes, vibration anomalies, pressure outliers
-- Z-score detection (|Z| > 3σ) across 4 metrics
-- **Output**: 28K factory alerts
+## Individual Projects
 
-### 2. **Financial Market Anomaly Detection**
-**1.44M stock trades** → HFT flash crash detection
-- Price/volume Z-score anomalies
-- Suspicious trading pattern identification
-- **Output**: 35K high-frequency trading alerts
+### 1. IoT Sensor Anomaly Detection
+- 1.44M sensor readings processed.
+- Detects temperature, vibration, and pressure anomalies.
+- Output: 28K factory alerts.
 
-### 3. **E-commerce Fraud Detection**  **TOP PROJECT**
-**1.44M orders** → Bulk orders + coupon abuse detection
+### 2. Financial Market Anomaly Detection
+- 1.44M stock trades processed.
+- Detects price and volume anomalies.
+- Output: 35K trading alerts.
 
- Top Fraud: CUST_039967 | Python Book | 100 units | 90% OFF (Z=37.5σ)
- Electronics: $183M revenue | 28K fraud alerts (1.96%)
+### 3. E-commerce Fraud Detection
+- 1.44M orders processed.
+- Detects bulk orders, coupon abuse, and suspicious purchasing patterns.
+- Output: 28K fraud alerts.
 
-- Quantity/discount/amount Z-scores
-- **Output**: Fraud alerts + revenue analytics
+### 4. Server Logs / SRE Anomaly Detection
+- 1.44M Apache/Nginx log rows processed.
+- Detects outages, latency spikes, and error bursts.
+- Output: 92K operational alerts.
 
-### 4. **Server Logs / SRE Anomaly Detection**
-**1.44M Apache/Nginx logs** → Outage + DDoS detection
+### 5. Social Media Trends + Bot Detection
+- 1.44M social media posts processed.
+- Detects viral trend spikes and bot-like behavior.
+- Output: 116K trend and bot alerts.
 
- CRITICAL: web06 | 76,923ms latency (Z=63.8σ) | 503 errors
- 92K alerts (6.4% error rate)
+## Example Results
 
-- Response time Z-scores + error filtering
-- **Output**: SRE incident reports
+| Domain | Records | Alerts | Use Case |
+|---|---:|---:|---|
+| IoT Sensors | 1.44M | 28K | Predictive maintenance |
+| Financial HFT | 1.44M | 35K | Flash crash and trading anomaly detection |
+| E-commerce | 1.44M | 28K | Fraud and abuse detection |
+| Server Logs | 1.44M | 92K | SRE and outage detection |
+| Social Media | 1.44M | 116K | Trend and bot detection |
 
-### 5. **Social Media Trends + Bot Detection**
-**1.44M posts** → Viral trends + crypto pump bots
+## Production Docker Run
 
- #AI trending | 49,535 likes max (Z=50σ)
-92K bot accounts detected (6.4%)
-
-- Engagement scoring + hashtag ranking
-- **Output**: Trend reports + bot networks
-
-##  Production Docker Deployment
-
+### Build
 ```bash
-# 1. Build (1.5 seconds)
 docker build -f Dockerfile.spark-pipeline -t spark-mastery:v1 .
+```
 
-# 2. Run E-commerce Fraud Pipeline
+### Run a pipeline
+```bash
 docker run --rm -v $(pwd)/data:/app/data spark-mastery:v1 \
-  /opt/spark/bin/spark-submit --master local /app/ecommerce_anomaly_final.py 
+  /opt/spark/bin/spark-submit --master local /app/ecommerce_anomaly_final.py
+```
 
-Verified Output:
-✅ Spark 3.5.1 | MemoryStore: 434.4 MiB | SparkUI:4040
- Dataset: 1,440,000 orders processed
- E-COMMERCE FRAUD: 28,322 alerts (1.96%)
+## Production Verification
 
- Production Verification
-✅ Spark 3.5.1 | Java 11 | Linux container startup ✓
-✅ MemoryStore: 434.4 MiB RAM allocated ✓
-✅ SparkUI: port 4040 (web accessible) ✓
-✅ 5 datasets mounted (/app/data/*.csv) ✓
-✅ /opt/spark/bin/spark-submit PATH confirmed ✓
-✅ PySpark DataFrames/SQL production-ready ✓
+- Spark 3.5.1 container execution.
+- MemoryStore and Spark UI verified.
+- Data volumes mounted successfully.
+- Spark submit path resolved inside container.
+- Pipelines run without external network dependency.
 
- Technical Challenges Solved
-✅ Fixed Docker image tag (apache/spark:3.5.1-python3)
-✅ Resolved spark-submit path (/opt/spark/bin/spark-submit)
-✅ Volume mounting (-v $(pwd):/app/data)
-✅ Data path fixes in PySpark scripts
-✅ Network-independent Docker builds (no pip)
- Future Improvements
-Spark Streaming (Kafka + real-time anomaly detection)
-MLflow model tracking + feature store
-Kubernetes Spark Operator deployment
-Grafana dashboards for anomaly visualization
-Databricks migration (cloud validation)
-📈 Run Individual Pipelines
-# Local Spark (native)
-spark-submit --master local pipelines/ecommerce_anomaly_final.py
+## Technical Challenges Solved
 
-# E-commerce Fraud (Docker)
-docker run -v ./data:/app/data spark-mastery:v1 \
-  /opt/spark/bin/spark-submit /app/ecommerce_anomaly_final.py
+- Fixed Docker image compatibility.
+- Resolved Spark submit path issues.
+- Standardized volume mounting.
+- Fixed dataset path handling in PySpark scripts.
+- Built network-independent Docker execution.
 
-# Server Logs SRE
-docker run -v ./data:/app/data spark-mastery:v1 \
-  /opt/spark/bin/spark-submit /app/server_logs_anomaly.py 
+## Future Improvements
 
- Outputs Generated
-ecommerce_alerts/part-*.csv     # 28K fraud transactions
-server_alerts/part-*.csv        # 92K SRE incidents  
-social_alerts/part-*.csv        # 116K trends + bots
+- Add Spark Streaming for real-time anomaly detection.
+- Add MLflow for experiment tracking.
+- Deploy through Kubernetes Spark Operator.
+- Add Grafana dashboards for visualization.
+- Validate in a cloud-based Databricks environment.
 
-Feel free to use for portfolio, learning, or production.
+## Notes
+
+This repository is intended for portfolio and learning purposes.  
+The pipelines are designed to show distributed processing, anomaly detection, and reproducible engineering workflows.
